@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Prevencionista de Riesgos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #abd3ec 100%);
+        }
+        
+        .card-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.4;
+            animation: blob 7s infinite;
+        }
+        
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20px, -50px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.9); }
+            75% { transform: translate(50px, 50px) scale(1.05); }
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #0ea5e9 0%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #0ea5e9;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 4px #0ea5e9;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+    <!-- Navegación Flotante -->
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-6 py-4 rounded-full card-glass shadow-2xl">
+        <div class="flex items-center space-x-8">
+            <a href="#inicio" class="nav-link text-sm font-semibold hover:text-cyan-400 transition">Inicio</a>
+            <a href="#sobre-mi" class="nav-link text-sm font-semibold hover:text-cyan-400 transition">Perfil</a>
+            <a href="#servicios" class="nav-link text-sm font-semibold hover:text-cyan-400 transition">Servicios</a>
+            <a href="#experiencia" class="nav-link text-sm font-semibold hover:text-cyan-400 transition">Trayectoria</a>
+            <a href="#contacto" class="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Blobs animados -->
+        <div class="blob bg-cyan-500 w-96 h-96 top-20 left-10"></div>
+        <div class="blob bg-blue-600 w-96 h-96 bottom-20 right-10" style="animation-delay: -3s;"></div>
+        <div class="blob bg-orange-500 w-72 h-72 top-1/2 left-1/2" style="animation-delay: -5s;"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center">
+                <h1 class="text-6x pt-24 md:text-8xl font-extrabold mb-6">
+                    Prevención de
+                    <span class="block gradient-text">Riesgos Laborales</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+                    Especialista en crear ambientes seguros y saludables. Transformando culturas organizacionales a través de la prevención.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#contacto" class="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-bold text-lg overflow-hidden hover:shadow-2xl hover:shadow-cyan-500/50 transition-all">
+                        <span class="relative z-10">Iniciar Conversación</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </a>
+                    <a href="#servicios" class="px-8 py-4 border-2 border-white/30 rounded-full font-bold text-lg hover:bg-white/10 backdrop-blur-sm transition">
+                        Ver Servicios
+                    </a>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-20">
+                    <div class="card-glass rounded-2xl p-6">
+                        <div class="text-4xl font-bold gradient-text mb-2">8+</div>
+                        <div class="text-gray-300 text-sm">Años de Experiencia</div>
+                    </div>
+                    <div class="card-glass rounded-2xl p-6">
+                        <div class="text-4xl font-bold gradient-text mb-2">500+</div>
+                        <div class="text-gray-300 text-sm">Trabajadores Capacitados</div>
+                    </div>
+                    <div class="card-glass rounded-2xl p-6">
+                        <div class="text-4xl font-bold gradient-text mb-2">45%</div>
+                        <div class="text-gray-300 text-sm">Reducción Accidentes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Sobre Mí -->
+    <section id="sobre-mi" class="py-32 bg-cyan-500 relative">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <span class="text-cyan-400 font-semibold text-sm tracking-widest uppercase">Sobre Mí</span>
+                    <h2 class="text-5xl font-bold mt-4 mb-6">Comprometida con la seguridad integral</h2>
+                    <p class="text-black text-lg mb-6 leading-relaxed">
+                        Profesional certificada en prevención de riesgos con una visión holística de la seguridad laboral. Mi enfoque combina normativas actualizadas, tecnología y desarrollo humano.
+                    </p>
+                    <p class="text-black text-lg mb-8 leading-relaxed">
+                        Creo firmemente que la prevención efectiva nace de la cultura organizacional, no solo de los protocolos. Por eso, trabajo en transformar mentalidades y construir ambientes donde la seguridad sea un valor compartido.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <span class="text-lg">Certificación Internacional ISO 45001</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <span class="text-lg">Experta en Matriz IPER</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"></path>
+                                </svg>
+                            </div>
+                            <span class="text-lg">Instructora Acreditada</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl blur-2xl opacity-30"></div>
+                        <div class="relative bg-slate-700 rounded-3xl p-8 space-y-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="font-semibold text-lg">Gestión de Seguridad</span>
+                                    <span class="text-cyan-400 font-bold">95%</span>
+                                </div>
+                                <div class="h-3 bg-slate-600 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="font-semibold text-lg">Evaluación de Riesgos</span>
+                                    <span class="text-orange-400 font-bold">98%</span>
+                                </div>
+                                <div class="h-3 bg-slate-600 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-orange-500 to-red-500 rounded-full" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="font-semibold text-lg">Capacitación</span>
+                                    <span class="text-green-400 font-bold">92%</span>
+                                </div>
+                                <div class="h-3 bg-slate-600 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="font-semibold text-lg">Auditorías</span>
+                                    <span class="text-purple-400 font-bold">90%</span>
+                                </div>
+                                <div class="h-3 bg-slate-600 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="font-semibold text-lg">Normativa Legal</span>
+                                    <span class="text-yellow-400 font-bold">94%</span>
+                                </div>
+                                <div class="h-3 bg-slate-600 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full" style="width: 94%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-32 bg-cyan-600">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 fade-in">
+                <span class="text-cyan-400 font-semibold text-sm tracking-widest uppercase">Servicios</span>
+                <h2 class="text-5xl font-bold mt-4 mb-6">Soluciones especializadas</h2>
+                <p class="text-gray-400 text-xl max-w-2xl mx-auto">Servicios integrales para proteger a tu equipo y cumplir con la normativa vigente</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Servicio 1 -->
+                <div class="service-card group bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-8 hover:shadow-2xl hover:shadow-cyan-500/20 cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-cyan-400 transition">Matriz IPER</h3>
+                    <p class="text-gray-400 leading-relaxed">Identificación exhaustiva de peligros, evaluación y control de riesgos con metodologías actualizadas.</p>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="service-card group bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-8 hover:shadow-2xl hover:shadow-orange-500/20 cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-orange-400 transition">Capacitaciones</h3>
+                    <p class="text-gray-400 leading-relaxed">Programas formativos presenciales y online adaptados a las necesidades de tu organización.</p>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="service-card group bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-8 hover:shadow-2xl hover:shadow-green-500/20 cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-green-400 transition">Planes de Emergencia</h3>
+                    <p class="text-gray-400 leading-relaxed">Diseño e implementación de protocolos efectivos de evacuación y respuesta ante emergencias.</p>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="service-card group bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-8 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-purple-400 transition">Auditorías</h3>
+                    <p class="text-gray-400 leading-relaxed">Evaluaciones sistemáticas del cumplimiento normativo y efectividad de medidas preventivas.</p>
+                </div>
+                
+                <!-- Servicio 5 -->
+                <div class="service-card group bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-8 hover:shadow-2xl hover:shadow-yellow-500/20 cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-yellow-400 transition">Asesoría Legal</h3>
+                    <p class="text-gray-400 leading-relaxed">Orientación en normativas DS 40, Ley 16.744 y todas las regulaciones vigentes.</p>
+                </div>
+                
+                <!-- Servicio 6 -->
+                <div class="service-card group bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl p-8 hover:shadow-2xl hover:shadow-blue-500/20 cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-blue-400 transition">Investigación Incidentes</h3>
+                    <p class="text-gray-400 leading-relaxed">Análisis profundo con metodología de árbol de causas para prevenir recurrencias.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencia -->
+    <section id="experiencia" class="py-32 bg-cyan-500">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 fade-in">
+                <span class="text-cyan-400 font-semibold text-sm tracking-widest uppercase">Trayectoria</span>
+                <h2 class="text-5xl font-bold mt-4 mb-6">Experiencia Profesional</h2>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="relative border-l-2 border-cyan-500/30 pl-8 space-y-12">
+                    <!-- Experiencia 1 -->
+                    <div class="timeline-item relative fade-in">
+                        <div class="bg-gradient-to-br from-slate-700 to-slate-600 rounded-2xl p-8 hover:shadow-xl hover:shadow-cyan-500/10 transition">
+                            <div class="flex flex-wrap justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-2">Prevencionista de Riesgos Senior</h3>
+                                    <p class="text-cyan-400 font-semibold">Empresa Minera - Sector Industrial</p>
+                                </div>
+                                <span class="bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 rounded-full text-sm font-bold mt-2 sm:mt-0">2020 - Presente</span>
+                            </div>
+                            <ul class="text-gray-300 space-y-2">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-cyan-400 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Implementación exitosa de sistema de gestión ISO 45001</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-cyan-400 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Reducción de accidentabilidad en 45% durante 3 años consecutivos</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-cyan-400 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Capacitación de más de 500 trabajadores en programas especializados</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Experiencia 2 -->
+                    <div class="timeline-item relative fade-in">
+                        <div class="bg-gradient-to-br from-slate-700 to-slate-600 rounded-2xl p-8 hover:shadow-xl hover:shadow-cyan-500/10 transition">
+                            <div class="flex flex-wrap justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-2">Coordinadora de Seguridad</h3>
+                                    <p class="text-orange-400 font-semibold">Constructora - Proyectos de Infraestructura</p>
+                                </div>
+                                <span class="bg-gradient-to-r from-orange-500 to-red-500 px-4 py-2 rounded-full text-sm font-bold mt-2 sm:mt-0">2017 - 2020</span>
+                            </div>
+                            <ul class="text-gray-300 space-y-2">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-orange-400 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Supervisión simultánea de 5 proyectos de construcción</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-orange-400 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Desarrollo de protocolos específicos para trabajos en altura</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-orange-400 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Gestión integral de EPP para más de 300 trabajadores</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Experiencia 3 -->
+                    <div class="timeline-item relative fade-in">
+                        <div class="bg-gradient-to-br from-slate-700 to-slate-600 rounded-2xl p-8 hover:shadow-xl hover:shadow-cyan-500/10 transition">
+                            <div class="flex flex-wrap justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-2">Analista de Prevención de Riesgos</h3>
+                                    <p class="text-green-400 font-semibold">Empresa Manufacturera</p>
+                                </div>
+                                <span class="bg-gradient-to-r from-green-500 to-emerald-500 px-4 py-2 rounded-full text-sm font-bold mt-2 sm:mt-0">2015 - 2017</span>
+                            </div>
+                            <ul class="text-gray-300 space-y-2">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-green-400 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Evaluación y mejora de riesgos ergonómicos en líneas de producción</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-green-400 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Implementación de programa de pausas activas</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-green-400 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Realización de charlas semanales de seguridad</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-32 bg-cyan-600 relative overflow-hidden">
+        <div class="blob bg-cyan-500 w-96 h-96 top-0 right-0"></div>
+        <div class="blob bg-blue-600 w-96 h-96 bottom-0 left-0" style="animation-delay: -3s;"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 fade-in">
+                <span class="text-cyan-400 font-semibold text-sm tracking-widest uppercase">Contacto</span>
+                <h2 class="text-5xl font-bold mt-4 mb-6">Trabajemos juntos</h2>
+                <p class="text-gray-400 text-xl max-w-2xl mx-auto">¿Tienes un proyecto o necesitas asesoría? Conversemos sobre cómo puedo ayudarte.</p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Info de contacto -->
+                    <div class="space-y-8 fade-in">
+                        <div class="card-glass rounded-2xl p-8">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">Email</p>
+                                    <p class="text-lg font-semibold">contacto@prevencionista.cl</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
+                                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">Teléfono</p>
+                                    <p class="text-lg font-semibold">+56 9 1234 5678</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">Ubicación</p>
+                                    <p class="text-lg font-semibold">Santiago, Chile</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Redes sociales -->
+                        <div class="card-glass rounded-2xl p-8">
+                            <h3 class="text-xl font-bold mb-6">Sígueme en redes</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center hover:scale-110 transition-transform">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-gradient-to-br from-sky-400 to-blue-500 rounded-xl flex items-center justify-center hover:scale-110 transition-transform">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center hover:scale-110 transition-transform">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center hover:scale-110 transition-transform">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulario -->
+                    <div class="card-glass rounded-2xl p-8 fade-in">
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Nombre completo</label>
+                                <input type="text" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl focus:outline-none focus:border-cyan-500 transition" placeholder="Tu nombre" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl focus:outline-none focus:border-cyan-500 transition" placeholder="tu@email.com" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Teléfono</label>
+                                <input type="tel" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl focus:outline-none focus:border-cyan-500 transition" placeholder="+56 9 1234 5678">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Mensaje</label>
+                                <textarea rows="4" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl focus:outline-none focus:border-cyan-500 transition resize-none" placeholder="Cuéntame sobre tu proyecto o consulta..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-cyan-500/50 transition-all">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-2xl font-bold gradient-text mb-2">Prevencionista de Riesgos</h3>
+                    <p class="text-gray-500 text-sm">Protegiendo vidas, construyendo futuros seguros</p>
+                </div>
+                <div class="text-gray-500 text-sm">
+                    <p>&copy; 2025 Todos los derechos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer para animaciones
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Formulario
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Animación de éxito
+            const button = e.target.querySelector('button');
+            const originalText = button.innerHTML;
+            button.innerHTML = '¡Mensaje enviado! ✓';
+            button.classList.add('bg-green-500');
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-500');
+                e.target.reset();
+            }, 3000);
+        });
+
+        // Parallax suave en hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('#inicio');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
